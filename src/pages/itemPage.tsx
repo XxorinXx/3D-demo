@@ -20,17 +20,24 @@ const ItemPage = () => {
   };
 
   const buttonOnClick = () => {
-    const userAgent = navigator.userAgent || navigator.vendor;
+    console.log("userAgent");
+    const userAgent = navigator.userAgent;
 
-    if (/Windows|Linux|Macintosh|Mac OS/i.test(userAgent)) {
-      console.log("Web/Desktop");
-      toggleDialog();
-    } else if (/android/i.test(userAgent)) {
+    console.log("userAgent", userAgent.includes("iPhone"));
+    console.log("userAgent", userAgent);
+
+    if (userAgent.includes("Android")) {
       console.log("android");
+      const androidVersionMatch = userAgent.match(/Android\s([\d.]+)/);
+      const androidVersion = androidVersionMatch ? androidVersionMatch[1] : "Unknown";
+      console.log("Android Version:", androidVersion);
       navigate("/openAR");
-    } else if (/iPad|iPhone|iPod/i.test(userAgent)) {
+    } else if (userAgent.includes("iPhone") || userAgent.includes("iPad") || userAgent.includes("iPod")) {
       console.log("ios");
       navigate("/openAR");
+    } else if (userAgent.includes("Windows") || userAgent.includes("Macintosh") || userAgent.includes("Mac")) {
+      console.log("Web/Desktop");
+      toggleDialog();
     } else {
       console.log("IDK wtf is that");
     }

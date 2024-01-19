@@ -11,27 +11,30 @@ const OpenARPage = () => {
 
     // Logic to open AR Quick Look automatically
     const openARViewer = () => {
-      let usdzPath = "google.com";
-      const userAgent = navigator.userAgent || navigator.vendor;
+      let usdzPath = "https://google.com";
+      const userAgent = navigator.userAgent;
+      console.log("userAgent", userAgent);
 
-      if (/Windows|Linux|Macintosh|Mac OS/i.test(userAgent)) {
+      if (userAgent.includes("Android")) {
+        console.log("android");
+
+        usdzPath = "https://firebasestorage.googleapis.com/v0/b/peerpay-23dff.appspot.com/o/chair.glb";
+      } else if (userAgent.includes("iPhone") || userAgent.includes("iPad") || userAgent.includes("iPod")) {
+        console.log("ios");
+        usdzPath = "https://firebasestorage.googleapis.com/v0/b/peerpay-23dff.appspot.com/o/chair.usdz";
+      } else if (userAgent.includes("Windows") || userAgent.includes("Macintosh") || userAgent.includes("Mac")) {
         console.log("Web/Desktop");
         navigate("/");
-      } else if (/android/i.test(userAgent)) {
-        console.log("android");
-      } else if (/iPad|iPhone|iPod/i.test(userAgent)) {
-        console.log("ios");
       } else {
         console.log("IDK wtf is that");
       }
-
       console.log(usdzPath);
 
       // Replace 'path/to/your/model.usdz' with the actual path to your USDZ file
 
       // Open USDZ file in AR Quick Look
 
-      //window.location.href = `https:/${usdzPath}`;
+      window.location.href = usdzPath;
     };
 
     // Simulate a delay for loading purposes
