@@ -18,10 +18,12 @@ const OpenARPage = () => {
       if (userAgent.includes("Android")) {
         console.log("android");
 
-        usdzPath = "https://firebasestorage.googleapis.com/v0/b/peerpay-23dff.appspot.com/o/chair.glb";
+        usdzPath =
+          "https://firebasestorage.googleapis.com/v0/b/peerpay-23dff.appspot.com/o/chair.glb?alt=media&token=2439c002-364c-4cb8-a0ac-70728662f646";
       } else if (userAgent.includes("iPhone") || userAgent.includes("iPad") || userAgent.includes("iPod")) {
         console.log("ios");
-        usdzPath = "https://firebasestorage.googleapis.com/v0/b/peerpay-23dff.appspot.com/o/chair.usdz";
+        usdzPath =
+          "https://firebasestorage.googleapis.com/v0/b/peerpay-23dff.appspot.com/o/chair.usdz?alt=media&token=e70f0709-716c-4701-8d06-79dc043705b3";
       } else if (userAgent.includes("Windows") || userAgent.includes("Macintosh") || userAgent.includes("Mac")) {
         console.log("Web/Desktop");
         navigate("/");
